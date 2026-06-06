@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year One // A First-Year Roadmap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ebony: { 900: '#181c17', 950: '#111310' },
+                        greyOlive: { 100: '#e4e7e5', 400: '#939f98', 900: '#181b19' },
+                        lilacAsh: { 400: '#ac869e' },
+                        frozenWater: { 400: '#6bc7a8' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #111310;
+            color: #e4e7e5;
+        }
+        /* Custom scrollbar styling for the inner photo tracks */
+        .photo-track::-webkit-scrollbar {
+            height: 4px;
+        }
+        .photo-track::-webkit-scrollbar-track {
+            background: rgba(24, 27, 25, 0.3);
+        }
+        .photo-track::-webkit-scrollbar-thumb {
+            background: #6bc7a8;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-frozenWater-400 selection:text-ebony-950">
+
+    <header class="fixed top-0 left-0 w-full z-50 p-6 md:p-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-gradient-to-b from-ebony-950 via-ebony-950/80 to-transparent">
+        <div>
+            <h1 class="text-lg font-bold tracking-tight uppercase">Year One</h1>
+            <p class="text-xs text-greyOlive-400 tracking-widest uppercase">My 1st-Year Roadmap</p>
+        </div>
+        <nav class="flex flex-wrap gap-x-6 gap-y-2 text-xs uppercase tracking-wider text-greyOlive-400 font-medium">
+            <a href="#home" class="hover:text-frozenWater-400 transition-colors">Home</a>
+            <a href="#academics" class="hover:text-frozenWater-400 transition-colors">Academics</a>
+            <a href="#events" class="hover:text-frozenWater-400 transition-colors">Events</a>
+            <a href="#sidequests" class="hover:text-frozenWater-400 transition-colors">Sidequests</a>
+            <a href="#recommendations" class="hover:text-frozenWater-400 transition-colors">Recommendations</a>
+            <a href="#archives" class="hover:text-frozenWater-400 transition-colors">Archives</a>
+        </nav>
+    </header>
+
+    <main class="w-full">
+        
+        <!-- 00 . HOME / HERO SECTION -->
+        <section id="home" class="w-full min-h-screen flex items-center p-6 md:p-24 border-b border-greyOlive-900/40 relative overflow-hidden">
+            <div class="max-w-2xl z-10">
+                <span class="text-xs font-mono text-lilacAsh-400 tracking-widest block mb-4">// INTRO</span>
+                <h2 class="text-4xl md:text-7xl font-light tracking-tight mb-6">A collection of steps, slips, and sidequests.</h2>
+                <p class="text-greyOlive-400 text-sm md:text-base leading-relaxed">Welcome to the digital log of my first year. Use the navigation or scroll vertically to jump through different semesters, and swipe horizontally inside sections to look through captured moments.</p>
+            </div>
+            <!-- Background Image Strip from your 7 home images -->
+            <div class="absolute right-0 top-0 w-full md:w-1/2 h-full opacity-10 pointer-events-none flex gap-4 p-4">
+                <div class="w-1/2 h-full flex flex-col gap-4 animate-scroll-vertical">
+                    <img src="images/home/1.jpg" class="w-full h-64 object-cover rounded" onerror="this.style.display='none'">
+                    <img src="images/home/2.jpg" class="w-full h-64 object-cover rounded" onerror="this.style.display='none'">
+                    <img src="images/home/3.jpg" class="w-full h-64 object-cover rounded" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </section>
+
+        <!-- 01 . ACADEMICS SECTION -->
+        <section id="academics" class="w-full min-h-screen flex flex-col justify-center p-6 md:p-24 border-b border-greyOlive-900/40">
+            <div class="w-full max-w-7xl mx-auto">
+                <span class="text-xs font-mono text-frozenWater-400 tracking-widest block mb-2">// 01 . ACADEMICS</span>
+                <h2 class="text-3xl md:text-5xl font-light tracking-tight mb-10">The Blueprint & Core Engine</h2>
+                
+                <div id="academicsTrack" class="photo-track flex overflow-x-auto gap-6 pb-6 scroll-smooth snap-x">
+                    <!-- JavaScript will cleanly inject your 10 academic image cards right here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 . EVENTS SECTION -->
+        <section id="events" class="w-full min-h-screen flex flex-col justify-center p-6 md:p-24 border-b border-greyOlive-900/40">
+            <div class="w-full max-w-7xl mx-auto">
+                <span class="text-xs font-mono text-lilacAsh-400 tracking-widest block mb-2">// 02 . EVENTS & VOLUNTEERING</span>
+                <h2 class="text-3xl md:text-5xl font-light tracking-tight mb-10">Fests, Crowds, & Community</h2>
+                
+                <div id="eventsTrack" class="photo-track flex overflow-x-auto gap-6 pb-6 scroll-smooth snap-x">
+                    <!-- JavaScript will inject your 16 event cards here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 . SIDEQUESTS SECTION -->
+        <section id="sidequests" class="w-full min-h-screen flex flex-col justify-center p-6 md:p-24 border-b border-greyOlive-900/40">
+            <div class="w-full max-w-7xl mx-auto">
+                <span class="text-xs font-mono text-frozenWater-400 tracking-widest block mb-2">// 03 . SIDEQUESTS</span>
+                <h2 class="text-3xl md:text-5xl font-light tracking-tight mb-10">The Real Fun Outside the Lines</h2>
+                
+                <div id="sidequestsTrack" class="photo-track flex overflow-x-auto gap-6 pb-6 scroll-smooth snap-x">
+                    <!-- JavaScript will inject your 8 sidequest cards here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 . RECOMMENDATIONS & INTERACTIVE FORM -->
+        <section id="recommendations" class="w-full min-h-screen flex flex-col justify-center p-6 md:p-24 border-b border-greyOlive-900/40">
+            <div class="w-full max-w-xl mx-auto">
+                <span class="text-xs font-mono text-lilacAsh-400 tracking-widest block mb-2">// 04 . YEAR TWO SUGGESTIONS</span>
+                <h2 class="text-3xl md:text-5xl font-light tracking-tight mb-4">Leave a Mission</h2>
+                <p class="text-xs text-greyOlive-400 mb-8 leading-relaxed">What clubs should I join, skills should I pick up, or places should I explore next semester? Drop your anonymous recommendation below.</p>
+                
+                <form id="suggestionForm" class="space-y-6" onsubmit="event.preventDefault();">
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-widest text-greyOlive-400 mb-2 font-mono">Category</label>
+                        <select class="w-full bg-greyOlive-900/40 border border-greyOlive-900 text-sm p-3 rounded focus:outline-none focus:border-frozenWater-400 text-greyOlive-100">
+                            <option value="academics">Academic Sub-branch</option>
+                            <option value="skills">Technical Skill / Hobby</option>
+                            <option value="travel">Travel & Sidequest Location</option>
+                            <option value="misc">Random Life Advice</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-widest text-greyOlive-400 mb-2 font-mono">Your Suggestion</label>
+                        <textarea rows="4" placeholder="Try learning Three.js, go check out that one coffee shop on the corner..." class="w-full bg-greyOlive-900/40 border border-greyOlive-900 text-sm p-3 rounded focus:outline-none focus:border-frozenWater-400 text-greyOlive-100 placeholder:text-greyOlive-400/30"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-greyOlive-900 border border-greyOlive-900 rounded hover:border-frozenWater-400 hover:text-frozenWater-400 transition-all font-mono text-xs uppercase tracking-widest">
+                        Submit Suggestion
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 05 . THE ARCHIVES -->
+        <section id="archives" class="w-full min-h-screen flex flex-col justify-center p-6 md:p-24">
+            <div class="w-full max-w-7xl mx-auto">
+                <span class="text-xs font-mono text-frozenWater-400 tracking-widest block mb-2">// 05 . THE ARCHIVES</span>
+                <h2 class="text-3xl md:text-5xl font-light tracking-tight mb-10">Raw, Unfiltered Candid Grid</h2>
+                
+                <div id="archivesGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- JavaScript will inject your 13 raw candid files into a gallery grid here -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="fixed bottom-0 left-0 w-full z-40 p-6 md:p-10 pointer-events-none flex justify-between text-[10px] font-mono uppercase tracking-widest text-greyOlive-400/30">
+        <div>Designed in VSCode</div>
+        <div>© 2026 / Portfolio</div>
+    </footer>
+<!-- INTERACTIVE FORM STORAGE & DISPLAY SCRIPT -->
+   <!-- DYNAMIC IMAGE LOOPER SCRIPT -->
+    <script>
+        // Setup image generation logic
+        function generateTrackCards(containerId, count, folderPath, accentColor) {
+            const track = document.getElementById(containerId);
+            if (!track) return;
+
+            for (let i = 1; i <= count; i++) {
+                const card = document.createElement('div');
+                card.className = `min-w-[300px] md:min-w-[450px] bg-greyOlive-900/20 border border-greyOlive-900 rounded p-6 snap-start group transition-all hover:border-${accentColor}/50`;
+                card.innerHTML = `
+                    <div class="w-full h-48 md:h-64 bg-greyOlive-900 rounded mb-4 overflow-hidden">
+                        <img src="images/${folderPath}/${i}.jpg" alt="Memory Segment" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.parentNode.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-xs text-greyOlive-400 uppercase\'>Image ${i} coming tomorrow</div>'">
+                    </div>
+                    <span class="text-[10px] font-mono text-${accentColor} uppercase tracking-widest block mb-1">Instance ${i}</span>
+                    <h3 class="text-lg font-medium mb-2 group-hover:text-${accentColor} transition-colors">Card Title ${i}</h3>
+                    <p class="text-xs text-greyOlive-400 leading-relaxed">Tomorrow, you can replace this placeholder description text with your actual narrative for this memory item.</p>
+                `;
+                track.appendChild(card);
+            }
+        }
+
+        function generateArchiveGrid(count) {
+            const grid = document.getElementById('archivesGrid');
+            if (!grid) return;
+
+            // Paths look dynamically at your folder architecture
+            // Adjust folderPath string below to "archiveees" if your folder spelling still contains 3 e's
+            const folderPath = "archivees"; 
+
+            for (let i = 1; i <= count; i++) {
+                const item = document.createElement('div');
+                // Alternates sizing automatically for an editorial look
+                const aspectClass = i % 3 === 0 ? 'aspect-[3/4] row-span-2' : (i % 4 === 0 ? 'aspect-video col-span-2 md:col-span-1' : 'aspect-square');
+                item.className = `${aspectClass} bg-greyOlive-900/20 border border-greyOlive-900 rounded overflow-hidden p-2 group hover:border-frozenWater-400/40 transition-all`;
+                item.innerHTML = `
+                    <img src="images/${folderPath}/${i}.jpg" class="w-full h-full object-cover rounded transition-transform duration-700 group-hover:scale-105" onerror="this.parentNode.innerHTML='<span class=\'text-[10px] text-greyOlive-400/30 font-mono\'>[ Candid ${i} ]</span>'">
+                `;
+                grid.appendChild(item);
+            }
+        }
+
+        // Initialize lists on document mount
+        window.addEventListener('DOMContentLoaded', () => {
+            generateTrackCards('academicsTrack', 10, 'academics', 'frozenWater');
+            generateTrackCards('eventsTrack', 16, 'events', 'lilacAsh');
+            generateTrackCards('sidequestsTrack', 8, 'sidequ', 'frozenWater');
+            generateArchiveGrid(13);
+        });
+    </script>
+</body>
+</html>
