@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,10 +10,12 @@
             theme: {
                 extend: {
                     colors: {
-                        ebony: { 900: '#181c17', 950: '#111310' },
-                        greyOlive: { 100: '#e4e7e5', 400: '#939f98', 900: '#181b19' },
-                        lilacAsh: { 400: '#ac869e' },
-                        frozenWater: { 400: '#6bc7a8' }
+                        petalPink: '#ba7ba1',
+                        lilac: '#c28cae',
+                        almondSilk: '#d0aba0',
+                        paleOak: '#dec4a1',
+                        softPeach: '#edcf8e',
+                        darkText: '#4a283d' /* A deep warm berry tone for ultimate contrast text */
                     }
                 }
             }
@@ -21,11 +23,10 @@
     </script>
     <style>
         body {
-            background-color: #111310;
-            color: #e4e7e5;
-            overflow-x: hidden;
+            background-color: #dec4a1; /* Pale Oak as primary warm background */
+            color: #4a283d;
+            overflow: hidden;
         }
-        /* Hide scrollbars to maintain the pristine minimal curation aesthetic */
         .photo-track::-webkit-scrollbar {
             display: none;
         }
@@ -33,190 +34,173 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        .carousel-view {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            visibility: hidden;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.4s ease-in-out, visibility 0.4s;
+        }
+        .carousel-view.active-view {
+            visibility: visible;
+            opacity: 1;
+            z-index: 40;
+        }
     </style>
 </head>
-<body class="antialiased selection:bg-frozenWater-400 selection:text-ebony-950">
+<body class="antialiased selection:bg-petalPink selection:text-white min-h-screen flex flex-col justify-between p-6 md:p-12 relative">
 
-    <header class="fixed top-0 left-0 w-full z-50 p-6 md:p-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-gradient-to-b from-ebony-950 via-ebony-950/40 to-transparent">
+    <!-- TOP HEADER LAYER -->
+    <header class="w-full flex justify-between items-start z-50">
         <div>
-            <h1 class="text-lg font-bold tracking-tight uppercase">Year One</h1>
-            <p class="text-xs text-greyOlive-400 tracking-widest uppercase">My 1st-Year Roadmap</p>
+            <h1 class="text-xl font-bold tracking-tight uppercase text-darkText">Year One</h1>
+            <p class="text-[10px] text-petalPink tracking-widest uppercase font-mono">My 1st-Year Roadmap</p>
         </div>
-        <nav class="flex flex-wrap gap-x-6 gap-y-2 text-xs uppercase tracking-wider text-greyOlive-400 font-medium">
-            <a href="#home" class="hover:text-frozenWater-400 transition-colors">Home</a>
-            <a href="#academics" class="hover:text-frozenWater-400 transition-colors">Academics</a>
-            <a href="#events" class="hover:text-frozenWater-400 transition-colors">Events</a>
-            <a href="#sidequests" class="hover:text-frozenWater-400 transition-colors">Sidequests</a>
-            <a href="#recommendations" class="hover:text-frozenWater-400 transition-colors">Recommendations</a>
-            <a href="#archives" class="hover:text-frozenWater-400 transition-colors">Archives</a>
-        </nav>
+        <div id="view-indicator" class="text-[10px] font-mono uppercase tracking-widest text-petalPink">// Home Panel</div>
     </header>
 
-    <main class="w-full">
+    <!-- MAIN DISPLAY TRACK INTERFACE -->
+    <main class="w-full h-[65vh] my-auto relative">
         
-        <section id="home" class="w-full min-h-screen flex items-center p-6 md:p-24 border-b border-greyOlive-900/40">
-            <div class="max-w-4xl w-full grid md:grid-cols-2 gap-16 items-center mx-auto">
-                <div>
-                    <span class="text-xs font-mono text-lilacAsh-400 tracking-widest block mb-4">// INTRO</span>
-                    <h2 class="text-4xl md:text-6xl font-light tracking-tight mb-6">A collection of steps, slips, and sidequests.</h2>
-                </div>
-                <div class="aspect-[4/5] w-full max-w-sm bg-greyOlive-900/20 border border-greyOlive-900 rounded overflow-hidden rotate-2 transform transition-transform duration-500 hover:rotate-0 shadow-2xl">
-                    <img src="images/home/1.jpg" alt="Year One Cover" class="w-full h-full object-cover">
-                </div>
+        <!-- CAROUSEL 1: HOME -->
+        <div id="home-view" class="carousel-view active-view">
+            <div id="home-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-center">
+                <!-- Auto-Populates -->
             </div>
-        </section>
+        </div>
 
-        <section id="academics" class="w-full min-h-screen flex flex-col justify-center p-6 md:p-24 border-b border-greyOlive-900/40">
-            <div class="w-full max-w-7xl mx-auto">
-                <span class="text-xs font-mono text-frozenWater-400 tracking-widest block mb-2">// 01 . ACADEMICS</span>
-                <h2 class="text-3xl md:text-5xl font-light tracking-tight mb-16">The Blueprint & Core Engine</h2>
-                <div id="academics-track" class="photo-track flex overflow-x-auto space-x-16 md:space-x-24 pt-10 pb-20 items-center scroll-smooth snap-x">
-                    </div>
+        <!-- CAROUSEL 2: ACADEMICS -->
+        <div id="academics-view" class="carousel-view">
+            <div id="academics-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-center">
+                <!-- Auto-Populates -->
             </div>
-        </section>
+        </div>
 
-        <section id="events" class="w-full min-h-screen flex flex-col justify-center p-6 md:p-24 border-b border-greyOlive-900/40">
-            <div class="w-full max-w-7xl mx-auto">
-                <span class="text-xs font-mono text-lilacAsh-400 tracking-widest block mb-2">// 02 . EVENTS & VOLUNTEERING</span>
-                <h2 class="text-3xl md:text-5xl font-light tracking-tight mb-16">Fests, Crowds, & Community</h2>
-                <div id="events-track" class="photo-track flex overflow-x-auto space-x-16 md:space-x-24 pt-10 pb-20 items-center scroll-smooth snap-x">
-                    </div>
+        <!-- CAROUSEL 3: EVENTS -->
+        <div id="events-view" class="carousel-view">
+            <div id="events-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-center">
+                <!-- Auto-Populates -->
             </div>
-        </section>
+        </div>
 
-        <section id="sidequests" class="w-full min-h-screen flex flex-col justify-center p-6 md:p-24 border-b border-greyOlive-900/40">
-            <div class="w-full max-w-7xl mx-auto">
-                <span class="text-xs font-mono text-frozenWater-400 tracking-widest block mb-2">// 03 . SIDEQUESTS</span>
-                <h2 class="text-3xl md:text-5xl font-light tracking-tight mb-16">The Real Fun Outside the Lines</h2>
-                <div id="sidequests-track" class="photo-track flex overflow-x-auto space-x-16 md:space-x-24 pt-10 pb-20 items-center scroll-smooth snap-x">
-                    </div>
+        <!-- CAROUSEL 4: SIDEQUESTS -->
+        <div id="sidequests-view" class="carousel-view">
+            <div id="sidequests-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-center">
+                <!-- Auto-Populates -->
             </div>
-        </section>
+        </div>
 
-        <section id="recommendations" class="w-full min-h-screen flex flex-col justify-center p-6 md:p-24 border-b border-greyOlive-900/40">
-            <div class="w-full max-w-xl mx-auto">
-                <span class="text-xs font-mono text-lilacAsh-400 tracking-widest block mb-2">// 04 . YEAR TWO SUGGESTIONS</span>
-                <h2 class="text-3xl md:text-5xl font-light tracking-tight mb-4">Leave a Mission</h2>
-                <p class="text-xs text-greyOlive-400 mb-8 leading-relaxed">What clubs should I join, skills should I pick up, or places should I explore next semester? Drop your anonymous recommendation below.</p>
-                
-                <form id="suggestionForm" class="space-y-6">
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-greyOlive-400 mb-2 font-mono">Category</label>
-                        <select class="w-full bg-greyOlive-900/40 border border-greyOlive-900 text-sm p-3 rounded focus:outline-none focus:border-frozenWater-400 text-greyOlive-100">
-                            <option value="academics">Academic Sub-branch</option>
-                            <option value="skills">Technical Skill / Hobby</option>
-                            <option value="travel">Travel & Sidequest Location</option>
-                            <option value="misc">Random Life Advice</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-greyOlive-400 mb-2 font-mono">Your Suggestion</label>
-                        <textarea rows="4" placeholder="Try learning Three.js, go check out that one coffee shop on the corner..." class="w-full bg-greyOlive-900/40 border border-greyOlive-900 text-sm p-3 rounded focus:outline-none focus:border-frozenWater-400 text-greyOlive-100 placeholder:text-greyOlive-400/30"></textarea>
-                    </div>
-                    <button type="submit" class="w-full py-3 bg-greyOlive-900 border border-greyOlive-900 rounded hover:border-frozenWater-400 hover:text-frozenWater-400 transition-all font-mono text-xs uppercase tracking-widest">
-                        Submit Suggestion
-                    </button>
+        <!-- CAROUSEL 5: RECOMMENDATIONS -->
+        <div id="recommendations-view" class="carousel-view justify-center">
+            <div class="w-full max-w-md bg-softPeach border border-almondSilk p-8 rounded shadow-xl text-center transform -rotate-1">
+                <h2 class="text-xl font-light tracking-tight mb-4 text-darkText">Leave a Mission</h2>
+                <form id="suggestionForm" class="space-y-4 text-left">
+                    <select class="w-full bg-paleOak border border-almondSilk text-xs p-3 rounded text-darkText focus:outline-none font-medium">
+                        <option value="skills">Technical Skill / Hobby</option>
+                        <option value="travel">Travel & Location</option>
+                        <option value="misc">Random Life Advice</option>
+                    </select>
+                    <textarea rows="3" placeholder="Drop next semester missions..." class="w-full bg-paleOak border border-almondSilk text-xs p-3 rounded text-darkText focus:outline-none placeholder:text-darkText/40 font-medium"></textarea>
+                    <button type="submit" class="w-full py-2.5 bg-darkText text-softPeach rounded font-mono text-[10px] uppercase tracking-widest hover:bg-darkText/90 transition-colors">Submit</button>
                 </form>
             </div>
-        </section>
+        </div>
 
-        <section id="archives" class="w-full min-h-screen flex flex-col justify-center p-6 md:p-24">
-            <div class="w-full max-w-7xl mx-auto">
-                <span class="text-xs font-mono text-frozenWater-400 tracking-widest block mb-2">// 05 . THE ARCHIVES</span>
-                <h2 class="text-3xl md:text-5xl font-light tracking-tight mb-12">Raw, Unfiltered Candid Grid</h2>
-                <div id="archives-grid" class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-                    </div>
+        <!-- CAROUSEL 6: ARCHIVES -->
+        <div id="archives-view" class="carousel-view">
+            <div id="archives-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-center">
+                <!-- Auto-Populates -->
             </div>
-        </section>
+        </div>
 
     </main>
 
-    <footer class="fixed bottom-0 left-0 w-full z-40 p-6 md:p-10 pointer-events-none flex justify-between text-[10px] font-mono uppercase tracking-widest text-greyOlive-400/30">
-        <div>Designed in VSCode</div>
-        <div>© 2026 / Portfolio</div>
+    <!-- FIXED BOTTOM NAVIGATION BAR DOCK -->
+    <footer class="w-full flex flex-col md:flex-row justify-between items-center gap-6 z-50 pt-4 border-t border-almondSilk/60">
+        <div class="text-[9px] font-mono uppercase tracking-widest text-petalPink hidden md:block">© 2026 // Archive Canvas</div>
+        
+        <nav id="bottom-dock" class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-[10px] font-mono uppercase tracking-widest font-bold text-darkText/50">
+            <button data-target="home-view" class="nav-btn text-darkText transition-colors">Home</button>
+            <button data-target="academics-view" class="nav-btn transition-colors">Academics</button>
+            <button data-target="events-view" class="nav-btn transition-colors">Events</button>
+            <button data-target="sidequests-view" class="nav-btn transition-colors">Sidequests</button>
+            <button data-target="recommendations-view" class="nav-btn transition-colors">Missions</button>
+            <button data-target="archives-view" class="nav-btn transition-colors">Archives</button>
+        </nav>
+        
+        <div class="text-[9px] font-mono uppercase tracking-widest text-petalPink">Drag track sideways to explore</div>
     </footer>
 
+    <!-- INTERACTION CONTROLLER SCRIPT -->
     <script>
         const imgCounts = {
+            home: 7,          // 1 is .jpg, 2-7 are .jpeg
             academics: 10,
             events: 16,
-            sidequests: 8,
-            archives: 11 // Updated from 13 to 11
+            sidequests: 8,     // folder name is sidequ, contains 8 files
+            archives: 11
         };
 
-        function generateMeechStyle(index) {
-            const rotations = ['rotate-1', '-rotate-2', 'rotate-3', '-rotate-1', 'rotate-2', '-rotate-3'];
-            const margins = ['mt-0', 'mt-8', '-mt-6', 'mt-4', '-mt-4', 'mt-6'];
+        function generateDramaticMeechStyle(index) {
+            const rotations = ['rotate-3', '-rotate-4', 'rotate-6', '-rotate-3', 'rotate-4', '-rotate-5'];
+            const margins = ['mt-0', 'mt-12', '-mt-10', 'mt-6', '-mt-8', 'mt-10'];
             return { 
                 rotation: rotations[index % rotations.length], 
                 margin: margins[index % margins.length] 
             };
         }
 
-        // Populate Horizontal Track Sections with Infinite Loop clones built in
-        function buildTracks() {
-            // Academics
-            const acadTrack = document.getElementById('academics-track');
-            // Loop twice to clone entries for seamless rolling wrapped feel
-            for(let loop=0; loop<2; loop++) {
-                for(let i=1; i<=imgCounts.academics; i++) {
-                    const style = generateMeechStyle(i);
-                    acadTrack.innerHTML += createTrackCard(`images/academics/${i}.jpeg`, style.rotation, style.margin);
-                }
-            }
+        function buildAllCarousels() {
+            // Maps your structural track IDs to your exact computer folder names
+            const paths = {
+                'home-track': { folder: 'home', count: imgCounts.home },
+                'academics-track': { folder: 'academics', count: imgCounts.academics },
+                'events-track': { folder: 'events', count: imgCounts.events },
+                'sidequests-track': { folder: 'sidequ', count: imgCounts.sidequests }, // Fixed tracking connection key
+                'archives-track': { folder: 'archivees', count: imgCounts.archives }
+            };
 
-            // Events
-            const eventTrack = document.getElementById('events-track');
-            for(let loop=0; loop<2; loop++) {
-                for(let i=1; i<=imgCounts.events; i++) {
-                    const style = generateMeechStyle(i);
-                    eventTrack.innerHTML += createTrackCard(`images/events/${i}.jpeg`, style.rotation, style.margin);
+            Object.entries(paths).forEach(([trackId, data]) => {
+                const track = document.getElementById(trackId);
+                if (!track) return;
+                
+                track.innerHTML = '';
+                
+                // Double loop creates the clones necessary for infinite-wrap drag physics
+                for(let loop = 0; loop < 2; loop++) {
+                    for(let i = 1; i <= data.count; i++) {
+                        const style = generateDramaticMeechStyle(i + (loop * data.count));
+                        
+                        // Handle your home folder rule explicitly: 1 is .jpg, others are .jpeg
+                        let ext = 'jpeg';
+                        if (data.folder === 'home' && i === 1) {
+                            ext = 'jpg';
+                        }
+                        
+                        track.innerHTML += `
+                            <div class="w-[200px] md:w-[260px] flex-shrink-0 transform transition-all duration-500 ease-out hover:rotate-0 hover:scale-105 ${style.rotation} ${style.margin}">
+                                <div class="w-full aspect-[3/4] max-h-[280px] md:max-h-[380px] bg-softPeach border-4 border-white rounded shadow-lg p-1">
+                                    <img src="images/${data.folder}/${i}.${ext}" 
+                                         alt="Roadmap Frame" 
+                                         class="w-full h-full object-cover rounded-sm"
+                                         onerror="this.onerror=null; this.src=this.src.endsWith('.jpeg') ? this.src.replace('.jpeg', '.jpg') : this.src.replace('.jpg', '.jpeg');">
+                                </div>
+                            </div>
+                        `;
+                    }
                 }
-            }
-
-            // Sidequests
-            const sideTrack = document.getElementById('sidequests-track');
-            for(let loop=0; loop<2; loop++) {
-                for(let i=1; i<=imgCounts.sidequests; i++) {
-                    const style = generateMeechStyle(i);
-                    sideTrack.innerHTML += createTrackCard(`images/sidequ/${i}.jpeg`, style.rotation, style.margin);
-                }
-            }
+            });
         }
 
-        function createTrackCard(src, rotation, margin) {
-            return `
-                <div class="w-[220px] md:w-[300px] flex-shrink-0 snap-start transform transition-all duration-500 ease-out hover:rotate-0 hover:scale-105 ${rotation} ${margin}">
-                    <div class="w-full aspect-[3/4] max-h-[300px] md:max-h-[400px] bg-greyOlive-900/20 border border-greyOlive-900/60 rounded overflow-hidden shadow-2xl">
-                        <img src="${src}" alt="Roadmap Snapshot" class="w-full h-full object-cover object-center">
-                    </div>
-                </div>
-            `;
-        }
-
-        // Populate Archives Grid (Strictly local folder tracking)
-        // Populate Archives Grid (Fixed path spelling to match your folder)
-        function buildGrid() {
-            const grid = document.getElementById('archives-grid');
-            for(let i=1; i<=imgCounts.archives; i++) {
-                let aspect = 'aspect-square';
-                if (i % 3 === 0) aspect = 'aspect-[3/4] row-span-2';
-                if (i % 5 === 0) aspect = 'aspect-video col-span-2 md:col-span-1';
-                const style = generateMeechStyle(i);
-
-                grid.innerHTML += `
-                    <div class="${aspect} bg-greyOlive-900/20 border border-greyOlive-900/60 rounded overflow-hidden p-1.5 transform transition-all duration-500 ease-out hover:rotate-0 hover:scale-105 ${style.rotation} ${style.margin}">
-                        <img src="images/archivees/${i}.jpeg" alt="Memory Snapshot" class="w-full h-full object-cover rounded filter grayscale hover:grayscale-0 transition-all duration-700">
-                    </div>
-                `;
-            }
-        }
-
-        // Infinite-Wrap Drag Scroll Controller
-        function initPremiumCarousel(trackId) {
+        // Horizontal Drag Momentum Logic
+        function setupCarouselInteractions(trackId) {
             const track = document.getElementById(trackId);
-            let isDown = false;
-            let startX, scrollLeft, velocity = 0, rafId = null;
+            if (!track) return;
+            let isDown = false, startX, scrollLeft, velocity = 0, rafId = null;
 
             track.addEventListener('mousedown', (e) => {
                 isDown = true;
@@ -225,96 +209,70 @@
                 scrollLeft = track.scrollLeft;
                 cancelAnimationFrame(rafId);
             });
-
             track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
-            track.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; glide(); });
-
+            track.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; runGlide(); });
             track.addEventListener('mousemove', (e) => {
                 if (!isDown) return;
                 e.preventDefault();
                 const x = e.pageX - track.offsetLeft;
-                const walk = (x - startX) * 1.4;
-                const prevScrollLeft = track.scrollLeft;
+                const walk = (x - startX) * 1.5;
+                const prevScroll = track.scrollLeft;
                 track.scrollLeft = scrollLeft - walk;
-                velocity = track.scrollLeft - prevScrollLeft;
-
-                // Infinite wrapping calculation logic
-                handleInfiniteWrap(track);
+                velocity = track.scrollLeft - prevScroll;
+                wrapPositionCheck(track);
             });
 
-            function glide() {
+            function runGlide() {
                 if (Math.abs(velocity) < 0.5) return;
                 track.scrollLeft += velocity;
-                velocity *= 0.93;
-                handleInfiniteWrap(track);
-                rafId = requestAnimationFrame(glide);
+                velocity *= 0.92;
+                wrapPositionCheck(track);
+                rafId = requestAnimationFrame(runGlide);
             }
 
-            function handleInfiniteWrap(el) {
-                const maxScroll = el.scrollWidth - el.clientWidth;
-                // If it hits the end, instantly reset position to the midpoint clone seamlessly
-                if (el.scrollLeft >= maxScroll - 2) {
-                    el.scrollLeft = maxScroll / 2;
-                } else if (el.scrollLeft <= 2) {
-                    el.scrollLeft = maxScroll / 2;
-                }
+            function wrapPositionCheck(el) {
+                const max = el.scrollWidth - el.clientWidth;
+                if (el.scrollLeft >= max - 2) el.scrollLeft = max / 2;
+                else if (el.scrollLeft <= 2) el.scrollLeft = max / 2;
             }
-
             track.style.cursor = 'grab';
             track.style.userSelect = 'none';
         }
 
-        // Suggestions System Handler
-        const form = document.getElementById('suggestionForm');
-        function renderSuggestionCard(category, text) {
-            const container = document.getElementById('recommendations').querySelector('.max-w-xl');
-            let board = document.getElementById('suggestionsBoard');
-            if (!board) {
-                board = document.createElement('div');
-                board.id = 'suggestionsBoard';
-                board.className = 'mt-12 pt-8 border-t border-greyOlive-900 grid gap-4';
-                container.appendChild(board);
-                const title = document.createElement('h4');
-                title.className = 'text-[10px] font-mono uppercase tracking-widest text-frozenWater-400 mb-2';
-                title.innerText = '// Incoming Missions Log';
-                board.appendChild(title);
-            }
-            const card = document.createElement('div');
-            card.className = 'bg-greyOlive-900/20 border border-greyOlive-900 p-4 rounded text-left';
-            card.innerHTML = `
-                <div class="flex justify-between items-center mb-2">
-                    <span class="text-[9px] font-mono uppercase tracking-wider text-lilacAsh-400 px-2 py-0.5 bg-greyOlive-900 rounded">${category}</span>
-                    <span class="text-[9px] font-mono text-greyOlive-400/50">Just now</span>
-                </div>
-                <p class="text-xs text-greyOlive-100 leading-relaxed">${text}</p>
-            `;
-            board.insertBefore(card, board.firstChild.nextSibling);
+        function setupBottomDockNavigation() {
+            const buttons = document.querySelectorAll('.nav-btn');
+            const views = document.querySelectorAll('.carousel-view');
+            const indicator = document.getElementById('view-indicator');
+
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const target = btn.getAttribute('data-target');
+                    
+                    buttons.forEach(b => b.classList.remove('text-darkText', 'font-bold'));
+                    btn.classList.add('text-darkText', 'font-bold');
+
+                    views.forEach(v => v.classList.remove('active-view'));
+                    const targetView = document.getElementById(target);
+                    targetView.classList.add('active-view');
+
+                    const track = targetView.querySelector('.photo-track');
+                    if (track) {
+                        track.scrollLeft = (track.scrollWidth - track.clientWidth) / 2;
+                    }
+
+                    indicator.innerText = `// ${btn.innerText} Panel`;
+                });
+            });
         }
 
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const select = form.querySelector('select');
-            const textarea = form.querySelector('textarea');
-            if (!textarea.value.trim()) return;
-
-            const mission = { category: select.options[select.selectedIndex].text, text: textarea.value };
-            const current = JSON.parse(localStorage.getItem('yearTwoMissions')) || [];
-            current.push(mission);
-            localStorage.setItem('yearTwoMissions', JSON.stringify(current));
-
-            renderSuggestionCard(mission.category, mission.text);
-            textarea.value = '';
-        });
-
-        window.addEventListener('DOMContentLoaded', () => {
-            buildTracks();
-            buildGrid();
-            initPremiumCarousel('academics-track');
-            initPremiumCarousel('events-track');
-            initPremiumCarousel('sidequests-track');
-            const saved = JSON.parse(localStorage.getItem('yearTwoMissions')) || [];
-            saved.forEach(item => renderSuggestionCard(item.category, item.text));
-        });
+        window.onload = () => {
+            buildAllCarousels();
+            ['home-track', 'academics-track', 'events-track', 'sidequests-track', 'archives-track'].forEach(setupCarouselInteractions);
+            setupBottomDockNavigation();
+            
+            const homeTrack = document.getElementById('home-track');
+            if(homeTrack) homeTrack.scrollLeft = (homeTrack.scrollWidth - homeTrack.clientWidth) / 2;
+        };
     </script>
 </body>
 </html>
