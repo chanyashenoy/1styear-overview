@@ -152,6 +152,7 @@
     </footer>
 
     <script>
+        
         const imgCounts = { home: 7, academics: 10, events: 16, sidequests: 8, archives: 11 };
 
         const landscapeConfig = {
@@ -278,13 +279,18 @@
         }
 
         function setupExplodedViewTriggers() {
+            // Unbind previous elements to prevent event doubling memory leaks
             const cards = document.querySelectorAll('.lookbook-card');
             
             cards.forEach(card => {
-                card.closest('.photo-track')?.addEventListener('mousedown', () => card.setAttribute('data-dragged', 'false'));
-                card.closest('.photo-track')?.addEventListener('mousemove', () => card.setAttribute('data-dragged', 'true'));
+                const track = card.closest('.photo-track');
+                if (track) {
+                    track.addEventListener('mousedown', () => card.setAttribute('data-dragged', 'false'));
+                    track.addEventListener('mousemove', () => card.setAttribute('data-dragged', 'true'));
+                }
 
-                card.addEventListener('click', (e) => {
+                // Standardized click routine passing global context parameters safely
+                card.onclick = function(e) {
                     if(card.getAttribute('data-dragged') === 'true') return;
 
                     const folder = card.getAttribute('data-folder');
@@ -293,11 +299,10 @@
                     if (folder === 'home') return;
 
                     const viewContainer = card.closest('.carousel-view');
-                    const track = viewContainer.querySelector('.photo-track');
-                    const originalTrackId = track ? track.id : containerTrackMap[viewContainer.id];
+                    const originalTrackId = containerTrackMap[viewContainer.id];
                     
                     renderExplodedPanel(viewContainer, folder, id, originalTrackId);
-                });
+                };
             });
         }
 
@@ -309,7 +314,7 @@
             
             container.innerHTML = `
                 <div class="w-full flex flex-col md:flex-row items-center gap-6 bg-cardBacking border border-slateDark/5 p-6 rounded-lg shadow-xl z-30 relative animate-fadeIn">
-                    <button id="close-exploded" data-track="${originalTrackId}" class="absolute top-3 right-4 font-mono text-xs tracking-widest text-mutedGray hover:text-slateDark cursor-pointer uppercase font-bold">← Back</button>
+                    <button id="close-exploded" class="absolute top-3 right-4 font-mono text-xs tracking-widest text-mutedGray hover:text-slateDark cursor-pointer uppercase font-bold">← Back</button>
                     <div class="w-full md:w-1/2 aspect-[3/4] max-h-[340px] rounded overflow-hidden shadow-sm border-2 border-chalkWhite">
                         <img id="main-exploded-img" src="images/${folder}/${currentId}.${imgExt}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='images/${folder}/${currentId}.jpg';">
                     </div>
@@ -324,14 +329,15 @@
                 </div>
             `;
 
-            document.getElementById('close-exploded').addEventListener('click', (e) => {
-                const trackTarget = e.target.getAttribute('data-track');
-                restoreOriginalTrackLayout(container, trackTarget);
-            });
+            // Back button restoration engine trigger
+            document.getElementById('close-exploded').onclick = function() {
+                restoreOriginalTrackLayout(container, originalTrackId);
+            };
 
+            // GLOBAL SIDEBAR INTERACTION CAPTURE LOOP
             const sidebarCards = container.querySelectorAll('.photo-track .lookbook-card');
             sidebarCards.forEach(sidebarCard => {
-                sidebarCard.addEventListener('click', () => {
+                sidebarCard.onclick = function() {
                     const newId = parseInt(sidebarCard.getAttribute('data-id'));
                     let newExt = (folder === 'home' && newId === 1) ? 'jpg' : 'jpeg';
                     
@@ -341,8 +347,14 @@
                     if (mainImg && mainDesc) {
                         mainImg.src = `images/${folder}/${newId}.${newExt}`;
                         mainDesc.innerText = imageDescriptions[folder][newId] || "Memory Canvas Captured Frame.";
+                        
+                        // Error handling to prevent broken frames on variable asset formats
+                        mainImg.onerror = function() {
+                            this.onerror = null;
+                            this.src = this.src.endsWith('.jpeg') ? this.src.replace('.jpeg', '.jpg') : this.src.replace('.jpg', '.jpeg');
+                        };
                     }
-                });
+                };
             });
         }
 
@@ -373,7 +385,8 @@
             container.innerHTML = `
                 <div id="${trackId}" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-start z-20 relative transition-all duration-500"></div>
             `;
-            buildAllCarousels();
+            
+            buildAllCarousels(); // This resets layout variables and automatically re-binds click event triggers
             
             const tracks = ['home-track', 'academics-track', 'events-track', 'sidequests-track', 'archives-track'];
             tracks.forEach(setupCarouselInteractions);
@@ -455,6 +468,7 @@
             });
         }
 
+        // INITIAL EXECUTION MOUNT
         window.onload = () => {
             buildAllCarousels();
             const tracks = ['home-track', 'academics-track', 'events-track', 'sidequests-track', 'archives-track'];
@@ -464,6 +478,7 @@
             const homeTrack = document.getElementById('home-track');
             if(homeTrack) homeTrack.scrollLeft = (homeTrack.scrollWidth - homeTrack.clientWidth) / 2;
         };
+
     </script>
 </body>
 </html>
