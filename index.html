@@ -156,17 +156,17 @@
         const imgCounts = { home: 7, academics: 10, events: 16, sidequests: 8, archives: 11 };
 
         const landscapeConfig = {
-            'archivees': [1, 2, 3, 4, 5, 6, 7],
+            'archives': [1, 2, 3, 4, 5, 6, 7],
             'events': [1, 2, 3, 4, 6, 7, 9],
-            'sidequ': [1, 2, 3, 4, 5]
+            'sidequests': [1, 2, 3, 4, 5]
         };
 
         const folderMap = {
             'home-track': 'home',
             'academics-track': 'academics',
             'events-track': 'events',
-            'sidequests-track': 'sidequ',     
-            'archives-track': 'archivees'    
+            'sidequests-track': 'sidequests',     
+            'archives-track': 'archives'    
         };
 
         const containerTrackMap = {
@@ -209,7 +209,7 @@
                 15: "Quick lunch break during the ThinkHer event.",
                 16: "Our very last-minute team at the Primavera debate contest. We actually came in 4th!!"
             },
-            'sidequ': { 
+            'sidequests': { 
                 1: "One of the best shows by the dance, dramatics, and music club.",
                 2: "DJ night prep setups.",
                 3: "Gravitas stall hopping around campus.",
@@ -219,7 +219,7 @@
                 7: "Taking in the Riviera decorations.",
                 8: "Resin workshop! We tried adding flowers... spot them if you can."
             },
-            'archivees': { 
+            'archives': { 
                 1: "Day ones at college. Incredibly lucky to have met them.",
                 2: "Freshers day memories.",
                 3: "Ganesh Chaturthi celebrations on campus.",
@@ -245,7 +245,7 @@
                 const track = document.getElementById(trackId);
                 if (!track) return;
                 
-                let countKey = folderName === 'sidequ' ? 'sidequests' : folderName === 'archivees' ? 'archives' : folderName;
+                let countKey = folderName === 'sidequests' ? 'sidequests' : folderName === 'archives' ? 'archives' : folderName;
                 let count = imgCounts[countKey];
                 
                 track.innerHTML = '';
@@ -359,7 +359,7 @@
         }
 
         function getTrackSiblingsHTML(folder) {
-            let countKey = folder === 'sidequ' ? 'sidequests' : folder === 'archivees' ? 'archives' : folder;
+            let countKey = folder === 'sidequests' ? 'sidequests' : folder === 'archives' ? 'archives' : folder;
             let count = imgCounts[countKey];
             let html = '';
             for(let i = 1; i <= count; i++) {
