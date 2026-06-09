@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;1,300&family=Tenor+Sans&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Cormorant+Infant:ital,wght@0,300;0,400;1,300&family=Tenor+Sans&display=swap');
     </style>
 
     <script>
@@ -16,7 +16,8 @@
                 extend: {
                     fontFamily: {
                         serifLookbook: ['"Cormorant Infant"', 'serif'],
-                        sansLookbook: ['"Tenor Sans"', 'sans-serif']
+                        sansLookbook: ['"Tenor Sans"', 'sans-serif'],
+                        descFont: ['"Cormorant Garamond"', 'serif']
                     },
                     colors: {
                         chalkWhite: '#faf8f6',
@@ -33,7 +34,8 @@
         body {
             background-color: #faf8f6;
             color: #1a1d24;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             font-family: "Tenor Sans", sans-serif;
             background-image: 
                 linear-gradient(to right, rgba(26, 29, 36, 0.04) 1px, transparent 1px),
@@ -65,21 +67,21 @@
             grid-template-columns: 1fr;
             gap: 2rem;
             width: 100%;
-            height: 100%;
+            height: auto;
             align-items: center;
         }
         @media (min-width: 768px) {
-            .exploded-container { grid-template-columns: 1.2fr 0.8fr; }
+            .exploded-container { grid-template-columns: 1.2fr 0.8fr; height: 100%; }
         }
     </style>
 </head>
 <body class="antialiased selection:bg-almondSilk selection:text-white min-h-screen flex flex-col justify-between p-6 md:p-12 relative select-none">
 
     <div class="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-hidden">
-        <div class="absolute top-28 left-4 md:left-12 opacity-90 -rotate-12 w-48 md:w-64 transition-all duration-700 hover:rotate-0">
+        <div class="absolute top-28 left-4 md:left-12 opacity-90 -rotate-12 w-32 md:w-64 transition-all duration-700 hover:rotate-0 hidden sm:block">
             <img src="images/camera.png" alt="Zine Camera Left" class="w-full h-auto drop-shadow-md filter grayscale hover:grayscale-0 transition-all duration-500">
         </div>
-        <div class="absolute bottom-20 right-4 md:right-12 opacity-90 rotate-12 w-48 md:w-64 transition-all duration-700 hover:rotate-0">
+        <div class="absolute bottom-20 right-4 md:right-12 opacity-90 rotate-12 w-32 md:w-64 transition-all duration-700 hover:rotate-0 hidden sm:block">
             <img src="images/camera.png" alt="Zine Camera Right" class="w-full h-auto drop-shadow-md filter grayscale hover:grayscale-0 transition-all duration-500">
         </div>
     </div>
@@ -92,40 +94,35 @@
         </div>
         <div class="text-center md:text-right font-sansLookbook text-[10px] tracking-[0.2em] uppercase text-mutedGray space-y-1">
             <div class="text-slateDark font-medium font-serifLookbook tracking-[0.1em] text-sm mb-0.5">CHANYA SHENOY</div>
-            <div><a href="mailto:chanyashenoy@gmail.com" class="hover:text-almondSilk transition-colors">chanyashenoy@gmail.com</a></div>
+            <div class="break-all"><a href="mailto:chanyashenoy@gmail.com" class="hover:text-almondSilk transition-colors">chanyashenoy@gmail.com</a></div>
             <div><a href="https://linkedin.com/in/chanya-shenoy-a6b233376" target="_blank" class="hover:text-almondSilk transition-colors">LINKEDIN: Chanya Shenoy</a></div>
         </div>
     </header>
 
-    <main class="w-full h-[60vh] my-auto relative">
+    <main class="w-full h-[55vh] md:h-[60vh] my-auto relative">
         
         <div id="home-view" class="carousel-view active-view">
-            <div id="home-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-center z-20 relative"></div>
+            <div id="home-track" class="photo-track w-full flex overflow-x-auto space-x-12 md:space-x-32 pt-12 pb-16 items-center z-20 relative"></div>
         </div>
 
         <div id="academics-view" class="carousel-view">
-            <div id="academics-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-start z-20 relative transition-all duration-500"></div>
+            <div id="academics-track" class="photo-track w-full flex overflow-x-auto space-x-12 md:space-x-32 pt-12 pb-16 items-start z-20 relative transition-all duration-500"></div>
         </div>
 
         <div id="events-view" class="carousel-view">
-            <div id="events-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-start z-20 relative transition-all duration-500"></div>
+            <div id="events-track" class="photo-track w-full flex overflow-x-auto space-x-12 md:space-x-32 pt-12 pb-16 items-start z-20 relative transition-all duration-500"></div>
         </div>
 
         <div id="sidequests-view" class="carousel-view">
-            <div id="sidequests-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-start z-20 relative transition-all duration-500"></div>
+            <div id="sidequests-track" class="photo-track w-full flex overflow-x-auto space-x-12 md:space-x-32 pt-12 pb-16 items-start z-20 relative transition-all duration-500"></div>
         </div>
 
         <div id="recommendations-view" class="carousel-view justify-center items-center">
-            <div class="w-full max-w-md bg-cardBacking border border-slateDark/5 p-8 rounded shadow-xl transform -rotate-1 z-20 relative">
+            <div class="w-full max-w-md bg-cardBacking border border-slateDark/5 p-6 md:p-8 rounded shadow-xl transform -rotate-1 z-20 relative mx-4">
                 <h2 class="text-xl tracking-[0.15em] uppercase text-slateDark font-sansLookbook mb-4">Leave a Mission</h2>
                 <form id="cb7504ee-a634-45a4-9bb1-712094bed3bf" action="https://api.web3forms.com/submit" method="POST" class="space-y-4 text-left font-sansLookbook">
-                    <!-- PASTE YOUR ACCESS KEY HERE -->
                     <input type="hidden" name="access_key" value="cb7504ee-a634-45a4-9bb1-712094bed3bf">
-                    
-                    <!-- OPTIONAL: Customizes the subject line of the email you receive -->
                     <input type="hidden" name="subject" value="New Portfolio Mission Submitted">
-                    
-                    <!-- OPTIONAL: Stops the page from redirecting to a Web3Forms landing screen after submitting -->
                     <input type="hidden" name="redirect" value="https://chanyashenoy.github.io/1styear-overview/">
 
                     <select name="Mission Type" class="w-full bg-chalkWhite border border-slateDark/10 text-xs p-3 rounded text-slateDark focus:outline-none focus:border-almondSilk font-medium tracking-wider">
@@ -142,7 +139,7 @@
         </div>
 
         <div id="archives-view" class="carousel-view">
-            <div id="archives-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-start z-20 relative transition-all duration-500"></div>
+            <div id="archives-track" class="photo-track w-full flex overflow-x-auto space-x-12 md:space-x-32 pt-12 pb-16 items-start z-20 relative transition-all duration-500"></div>
         </div>
 
     </main>
@@ -150,7 +147,8 @@
     <footer class="w-full flex flex-col md:flex-row justify-between items-center gap-6 z-50 pt-4 border-t border-slateDark/5 font-sansLookbook">
         <div id="click-tip" class="text-[9px] uppercase tracking-[0.25em] text-mutedGray hidden md:block">Click any frame to read details</div>
         
-        <nav id="bottom-dock" class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-[11px] uppercase tracking-[0.25em] font-light text-slateDark/40">
+        <!-- Tab navigation container font updated cleanly using 'font-serifLookbook font-medium lowercase tracking-[0.15em]' options -->
+        <nav id="bottom-dock" class="flex flex-wrap justify-center gap-x-6 gap-y-2 md:gap-x-8 text-[14px] md:text-[16px] font-serifLookbook tracking-[0.12em] font-medium text-slateDark/40 px-2">
             <button data-target="home-view" class="nav-btn text-slateDark transition-colors">Home</button>
             <button data-target="academics-view" class="nav-btn transition-colors">Academics</button>
             <button data-target="events-view" class="nav-btn transition-colors">Events</button>
@@ -159,11 +157,10 @@
             <button data-target="archives-view" class="nav-btn transition-colors">Archives</button>
         </nav>
         
-        <div class="text-[9px] uppercase tracking-[0.25em] text-mutedGray">Click & Drag Track to Explore</div>
+        <div class="text-[9px] uppercase tracking-[0.25em] text-mutedGray text-center">Swipe or Drag Track to Explore</div>
     </footer>
 
     <script>
-        
         const imgCounts = { home: 7, academics: 10, events: 16, sidequests: 8, archives: 11 };
 
         const landscapeConfig = {
@@ -269,8 +266,8 @@
                         const folderLandscapeList = landscapeConfig[folderName] || [];
                         const isLandscape = folderLandscapeList.includes(i);
                         
-                        const cardWidth = isLandscape ? 'w-[280px] md:w-[380px]' : 'w-[200px] md:w-[260px]';
-                        const cardAspect = isLandscape ? 'aspect-[4/3] max-h-[220px] md:max-h-[300px]' : 'aspect-[3/4] max-h-[280px] md:max-h-[380px]';
+                        const cardWidth = isLandscape ? 'w-[220px] md:w-[380px]' : 'w-[160px] md:w-[260px]';
+                        const cardAspect = isLandscape ? 'aspect-[4/3] max-h-[170px] md:max-h-[300px]' : 'aspect-[3/4] max-h-[220px] md:max-h-[380px]';
                         
                         track.innerHTML += `
                             <div data-folder="${folderName}" data-id="${i}" class="lookbook-card ${cardWidth} flex-shrink-0 cursor-pointer transform transition-all duration-500 ease-out hover:rotate-0 hover:scale-105 ${style.rotation} ${style.margin}">
@@ -290,7 +287,6 @@
         }
 
         function setupExplodedViewTriggers() {
-            // Unbind previous elements to prevent event doubling memory leaks
             const cards = document.querySelectorAll('.lookbook-card');
             
             cards.forEach(card => {
@@ -298,9 +294,10 @@
                 if (track) {
                     track.addEventListener('mousedown', () => card.setAttribute('data-dragged', 'false'));
                     track.addEventListener('mousemove', () => card.setAttribute('data-dragged', 'true'));
+                    track.addEventListener('touchstart', () => card.setAttribute('data-dragged', 'false'));
+                    track.addEventListener('touchmove', () => card.setAttribute('data-dragged', 'true'));
                 }
 
-                // Standardized click routine passing global context parameters safely
                 card.onclick = function(e) {
                     if(card.getAttribute('data-dragged') === 'true') return;
 
@@ -324,28 +321,26 @@
             container.classList.add('exploded-container');
             
             container.innerHTML = `
-                <div class="w-full flex flex-col md:flex-row items-center gap-6 bg-cardBacking border border-slateDark/5 p-6 rounded-lg shadow-xl z-30 relative animate-fadeIn">
+                <div class="w-full flex flex-col md:flex-row items-center gap-6 bg-cardBacking border border-slateDark/5 p-6 rounded-lg shadow-xl z-30 relative mx-auto max-w-xl md:max-w-none">
                     <button id="close-exploded" class="absolute top-3 right-4 font-mono text-xs tracking-widest text-mutedGray hover:text-slateDark cursor-pointer uppercase font-bold">← Back</button>
-                    <div class="w-full md:w-1/2 aspect-[3/4] max-h-[340px] rounded overflow-hidden shadow-sm border-2 border-chalkWhite">
+                    <div class="w-full md:w-1/2 aspect-[3/4] max-h-[340px] rounded overflow-hidden shadow-sm border-2 border-chalkWhite mt-4 md:mt-0">
                         <img id="main-exploded-img" src="images/${folder}/${currentId}.${imgExt}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='images/${folder}/${currentId}.jpg';">
                     </div>
                     <div class="w-full md:w-1/2 text-left">
                         <h3 class="text-xs font-mono tracking-[0.2em] text-almondSilk uppercase mb-2">// Milestone Note</h3>
-                        <p id="main-exploded-desc" class="text-sm tracking-wide text-slateDark leading-relaxed font-sansLookbook font-light">${descText}</p>
+                        <p id="main-exploded-desc" class="font-descFont italic font-normal text-md md:text-lg text-slateDark/90 tracking-wide leading-relaxed">${descText}</p>
                     </div>
                 </div>
 
-                <div class="w-full h-[50vh] overflow-y-auto flex flex-col gap-12 items-center pt-4 pb-20 photo-track z-20">
+                <div class="w-full h-[35vh] md:h-[50vh] overflow-x-auto md:overflow-y-auto flex flex-row md:flex-col gap-6 md:gap-12 items-center pt-4 pb-4 md:pb-20 photo-track z-20">
                     ${getTrackSiblingsHTML(folder)}
                 </div>
             `;
 
-            // Back button restoration engine trigger
             document.getElementById('close-exploded').onclick = function() {
                 restoreOriginalTrackLayout(container, originalTrackId);
             };
 
-            // GLOBAL SIDEBAR INTERACTION CAPTURE LOOP
             const sidebarCards = container.querySelectorAll('.photo-track .lookbook-card');
             sidebarCards.forEach(sidebarCard => {
                 sidebarCard.onclick = function() {
@@ -359,14 +354,16 @@
                         mainImg.src = `images/${folder}/${newId}.${newExt}`;
                         mainDesc.innerText = imageDescriptions[folder][newId] || "Memory Canvas Captured Frame.";
                         
-                        // Error handling to prevent broken frames on variable asset formats
                         mainImg.onerror = function() {
-                            this.onerror = null;
+                            this.onerror=null;
                             this.src = this.src.endsWith('.jpeg') ? this.src.replace('.jpeg', '.jpg') : this.src.replace('.jpg', '.jpeg');
                         };
                     }
                 };
             });
+            
+            const expTrack = container.querySelector('.photo-track');
+            if(expTrack) setupCarouselInteractions(expTrack);
         }
 
         function getTrackSiblingsHTML(folder) {
@@ -377,7 +374,7 @@
                 let ext = (folder === 'home' && i === 1) ? 'jpg' : 'jpeg';
                 const folderLandscapeList = landscapeConfig[folder] || [];
                 const isLandscape = folderLandscapeList.includes(i);
-                const cardWidth = isLandscape ? 'w-[240px]' : 'w-[180px]';
+                const cardWidth = isLandscape ? 'w-[160px] md:w-[240px]' : 'w-[120px] md:w-[180px]';
                 const cardAspect = isLandscape ? 'aspect-[4/3]' : 'aspect-[3/4]';
 
                 html += `
@@ -394,23 +391,27 @@
         function restoreOriginalTrackLayout(container, trackId) {
             container.classList.remove('exploded-container');
             container.innerHTML = `
-                <div id="${trackId}" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-start z-20 relative transition-all duration-500"></div>
+                <div id="${trackId}" class="photo-track w-full flex overflow-x-auto space-x-12 md:space-x-32 pt-12 pb-16 items-start z-20 relative transition-all duration-500"></div>
             `;
             
-            buildAllCarousels(); // This resets layout variables and automatically re-binds click event triggers
+            buildAllCarousels();
             
             const tracks = ['home-track', 'academics-track', 'events-track', 'sidequests-track', 'archives-track'];
-            tracks.forEach(setupCarouselInteractions);
+            tracks.forEach(id => {
+                const el = document.getElementById(id);
+                if(el) setupCarouselInteractions(el);
+            });
             
             const restoredTrack = document.getElementById(trackId);
             if (restoredTrack) restoredTrack.scrollLeft = (restoredTrack.scrollWidth - restoredTrack.clientWidth) / 2;
         }
 
-        function setupCarouselInteractions(trackId) {
-            const track = document.getElementById(trackId);
+        function setupCarouselInteractions(trackTarget) {
+            const track = (typeof trackTarget === 'string') ? document.getElementById(trackTarget) : trackTarget;
             if (!track) return;
             let isDown = false, startX, scrollLeft, velocity = 0, rafId = null;
 
+            // Desktop Mouse Handling
             track.addEventListener('mousedown', (e) => {
                 isDown = true;
                 track.style.cursor = 'grabbing';
@@ -431,6 +432,24 @@
                 wrapPositionCheck(track);
             });
 
+            // Mobile Screen Swiping Events
+            track.addEventListener('touchstart', (e) => {
+                isDown = true;
+                startX = e.touches[0].pageX - track.offsetLeft;
+                scrollLeft = track.scrollLeft;
+                cancelAnimationFrame(rafId);
+            }, { passive: true });
+            track.addEventListener('touchend', () => { isDown = false; runGlide(); }, { passive: true });
+            track.addEventListener('touchmove', (e) => {
+                if (!isDown) return;
+                const x = e.touches[0].pageX - track.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                const prevScroll = track.scrollLeft;
+                track.scrollLeft = scrollLeft - walk;
+                velocity = track.scrollLeft - prevScroll;
+                wrapPositionCheck(track);
+            }, { passive: true });
+
             function runGlide() {
                 if (Math.abs(velocity) < 0.5) return;
                 track.scrollLeft += velocity;
@@ -441,6 +460,7 @@
 
             function wrapPositionCheck(el) {
                 const max = el.scrollWidth - el.clientWidth;
+                if (max <= 0) return;
                 if (el.scrollLeft >= max - 2) el.scrollLeft = max / 2;
                 else if (el.scrollLeft <= 2) el.scrollLeft = max / 2;
             }
@@ -451,8 +471,6 @@
         function setupBottomDockNavigation() {
             const buttons = document.querySelectorAll('.nav-btn');
             const views = document.querySelectorAll('.carousel-view');
-            const indicator = document.getElementById('view-indicator');
-            const tip = document.getElementById('click-tip');
 
             buttons.forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -468,28 +486,29 @@
 
                     buildAllCarousels();
                     const tracks = ['home-track', 'academics-track', 'events-track', 'sidequests-track', 'archives-track'];
-                    tracks.forEach(setupCarouselInteractions);
+                    tracks.forEach(id => {
+                        const el = document.getElementById(id);
+                        if(el) setupCarouselInteractions(el);
+                    });
 
                     const track = targetView.querySelector('.photo-track');
                     if (track) { track.scrollLeft = (track.scrollWidth - track.clientWidth) / 2; }
-
-                    indicator.innerText = `// ${btn.innerText} Canvas`;
-                    tip.innerText = target === 'home-view' ? "© 2026 // Gallery Interface" : "Click any frame to read details";
                 });
             });
         }
 
-        // INITIAL EXECUTION MOUNT
         window.onload = () => {
             buildAllCarousels();
             const tracks = ['home-track', 'academics-track', 'events-track', 'sidequests-track', 'archives-track'];
-            tracks.forEach(setupCarouselInteractions);
+            tracks.forEach(id => {
+                const el = document.getElementById(id);
+                if(el) setupCarouselInteractions(el);
+            });
             setupBottomDockNavigation();
             
             const homeTrack = document.getElementById('home-track');
             if(homeTrack) homeTrack.scrollLeft = (homeTrack.scrollWidth - homeTrack.clientWidth) / 2;
         };
-
     </script>
 </body>
 </html>
