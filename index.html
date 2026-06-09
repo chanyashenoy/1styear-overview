@@ -118,13 +118,24 @@
         <div id="recommendations-view" class="carousel-view justify-center items-center">
             <div class="w-full max-w-md bg-cardBacking border border-slateDark/5 p-8 rounded shadow-xl transform -rotate-1 z-20 relative">
                 <h2 class="text-xl tracking-[0.15em] uppercase text-slateDark font-sansLookbook mb-4">Leave a Mission</h2>
-                <form id="suggestionForm" class="space-y-4 text-left font-sansLookbook">
-                    <select class="w-full bg-chalkWhite border border-slateDark/10 text-xs p-3 rounded text-slateDark focus:outline-none focus:border-almondSilk font-medium tracking-wider">
+                <form id="cb7504ee-a634-45a4-9bb1-712094bed3bf" action="https://api.web3forms.com/submit" method="POST" class="space-y-4 text-left font-sansLookbook">
+                    <!-- PASTE YOUR ACCESS KEY HERE -->
+                    <input type="hidden" name="access_key" value="cb7504ee-a634-45a4-9bb1-712094bed3bf">
+                    
+                    <!-- OPTIONAL: Customizes the subject line of the email you receive -->
+                    <input type="hidden" name="subject" value="New Portfolio Mission Submitted">
+                    
+                    <!-- OPTIONAL: Stops the page from redirecting to a Web3Forms landing screen after submitting -->
+                    <input type="hidden" name="redirect" value="https://chanyashenoy.github.io/1styear-overview/">
+
+                    <select name="Mission Type" class="w-full bg-chalkWhite border border-slateDark/10 text-xs p-3 rounded text-slateDark focus:outline-none focus:border-almondSilk font-medium tracking-wider">
                         <option value="skills">Technical Skill / Hobby</option>
                         <option value="travel">Travel & Location</option>
                         <option value="misc">Random Life Advice</option>
                     </select>
-                    <textarea rows="3" placeholder="Drop next semester missions..." class="w-full bg-chalkWhite border border-slateDark/10 text-xs p-3 rounded text-slateDark focus:outline-none focus:border-almondSilk placeholder:text-slateDark/30 font-medium tracking-wider"></textarea>
+                    
+                    <textarea name="Mission Message" rows="3" placeholder="Drop next semester missions..." required class="w-full bg-chalkWhite border border-slateDark/10 text-xs p-3 rounded text-slateDark focus:outline-none focus:border-almondSilk placeholder:text-slateDark/30 font-medium tracking-wider"></textarea>
+                    
                     <button type="submit" class="w-full py-2.5 bg-slateDark text-chalkWhite rounded text-[10px] uppercase tracking-[0.2em] hover:bg-slateDark/90 transition-colors">Submit</button>
                 </form>
             </div>
