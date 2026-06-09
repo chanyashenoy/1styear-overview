@@ -5,17 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Year One // A First-Year Roadmap</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;1,300&family=Tenor+Sans&display=swap');
+    </style>
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        serifLookbook: ['"Cormorant Infant"', 'serif'],
+                        sansLookbook: ['"Tenor Sans"', 'sans-serif']
+                    },
                     colors: {
-                        petalPink: '#ba7ba1',
-                        lilac: '#c28cae',
+                        chalkWhite: '#faf8f6',
+                        cardBacking: '#ffffff',
+                        slateDark: '#1a1d24',
                         almondSilk: '#d0aba0',
-                        paleOak: '#dec4a1',
-                        softPeach: '#edcf8e',
-                        darkText: '#4a283d' /* A deep warm berry tone for ultimate contrast text */
+                        mutedGray: '#8e9196'
                     }
                 }
             }
@@ -23,17 +31,18 @@
     </script>
     <style>
         body {
-            background-color: #dec4a1; /* Pale Oak as primary warm background */
-            color: #4a283d;
+            background-color: #faf8f6;
+            color: #1a1d24;
             overflow: hidden;
+            font-family: "Tenor Sans", sans-serif;
+            background-image: 
+                linear-gradient(to right, rgba(26, 29, 36, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(26, 29, 36, 0.04) 1px, transparent 1px);
+            background-size: 24px 24px;
         }
-        .photo-track::-webkit-scrollbar {
-            display: none;
-        }
-        .photo-track {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        .photo-track::-webkit-scrollbar { display: none; }
+        .photo-track { -ms-overflow-style: none; scrollbar-width: none; }
+        
         .carousel-view {
             position: absolute;
             inset: 0;
@@ -50,81 +59,88 @@
             opacity: 1;
             z-index: 40;
         }
+
+        .exploded-container {
+            display: grid !important;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+        }
+        @media (min-width: 768px) {
+            .exploded-container { grid-template-columns: 1.2fr 0.8fr; }
+        }
     </style>
 </head>
-<body class="antialiased selection:bg-petalPink selection:text-white min-h-screen flex flex-col justify-between p-6 md:p-12 relative">
+<body class="antialiased selection:bg-almondSilk selection:text-white min-h-screen flex flex-col justify-between p-6 md:p-12 relative select-none">
 
-    <!-- TOP HEADER LAYER -->
-    <header class="w-full flex justify-between items-start z-50">
-        <div>
-            <h1 class="text-xl font-bold tracking-tight uppercase text-darkText">Year One</h1>
-            <p class="text-[10px] text-petalPink tracking-widest uppercase font-mono">My 1st-Year Roadmap</p>
+    <div class="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-hidden">
+        <div class="absolute top-28 left-4 md:left-12 opacity-90 -rotate-12 w-48 md:w-64 transition-all duration-700 hover:rotate-0">
+            <img src="images/camera.png" alt="Zine Camera Left" class="w-full h-auto drop-shadow-md filter grayscale hover:grayscale-0 transition-all duration-500">
         </div>
-        <div id="view-indicator" class="text-[10px] font-mono uppercase tracking-widest text-petalPink">// Home Panel</div>
+        <div class="absolute bottom-20 right-4 md:right-12 opacity-90 rotate-12 w-48 md:w-64 transition-all duration-700 hover:rotate-0">
+            <img src="images/camera.png" alt="Zine Camera Right" class="w-full h-auto drop-shadow-md filter grayscale hover:grayscale-0 transition-all duration-500">
+        </div>
+    </div>
+
+    <header class="w-full grid grid-cols-1 md:grid-cols-3 items-center gap-4 z-50 pb-4 border-b border-slateDark/5">
+        <div class="hidden md:block"></div>
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl tracking-[0.25em] font-light uppercase text-slateDark font-serifLookbook leading-none">Year One</h1>
+            <p class="text-[11px] text-almondSilk tracking-[0.35em] uppercase font-sansLookbook mt-3">A look back on many firsts</p>
+        </div>
+        <div class="text-center md:text-right font-sansLookbook text-[10px] tracking-[0.2em] uppercase text-mutedGray space-y-1">
+            <div class="text-slateDark font-medium font-serifLookbook tracking-[0.1em] text-sm mb-0.5">CHANYA SHENOY</div>
+            <div><a href="mailto:chanyashenoy@gmail.com" class="hover:text-almondSilk transition-colors">chanyashenoy@gmail.com</a></div>
+            <div><a href="https://linkedin.com/in/chanya-shenoy-a6b233376" target="_blank" class="hover:text-almondSilk transition-colors">LINKEDIN: Chanya Shenoy</a></div>
+        </div>
     </header>
 
-    <!-- MAIN DISPLAY TRACK INTERFACE -->
-    <main class="w-full h-[65vh] my-auto relative">
+    <main class="w-full h-[60vh] my-auto relative">
         
-        <!-- CAROUSEL 1: HOME -->
         <div id="home-view" class="carousel-view active-view">
-            <div id="home-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-center">
-                <!-- Auto-Populates -->
-            </div>
+            <div id="home-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-center z-20 relative"></div>
         </div>
 
-        <!-- CAROUSEL 2: ACADEMICS -->
         <div id="academics-view" class="carousel-view">
-            <div id="academics-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-center">
-                <!-- Auto-Populates -->
-            </div>
+            <div id="academics-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-start z-20 relative transition-all duration-500"></div>
         </div>
 
-        <!-- CAROUSEL 3: EVENTS -->
         <div id="events-view" class="carousel-view">
-            <div id="events-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-center">
-                <!-- Auto-Populates -->
-            </div>
+            <div id="events-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-start z-20 relative transition-all duration-500"></div>
         </div>
 
-        <!-- CAROUSEL 4: SIDEQUESTS -->
         <div id="sidequests-view" class="carousel-view">
-            <div id="sidequests-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-center">
-                <!-- Auto-Populates -->
-            </div>
+            <div id="sidequests-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-start z-20 relative transition-all duration-500"></div>
         </div>
 
-        <!-- CAROUSEL 5: RECOMMENDATIONS -->
-        <div id="recommendations-view" class="carousel-view justify-center">
-            <div class="w-full max-w-md bg-softPeach border border-almondSilk p-8 rounded shadow-xl text-center transform -rotate-1">
-                <h2 class="text-xl font-light tracking-tight mb-4 text-darkText">Leave a Mission</h2>
-                <form id="suggestionForm" class="space-y-4 text-left">
-                    <select class="w-full bg-paleOak border border-almondSilk text-xs p-3 rounded text-darkText focus:outline-none font-medium">
+        <div id="recommendations-view" class="carousel-view justify-center items-center">
+            <div class="w-full max-w-md bg-cardBacking border border-slateDark/5 p-8 rounded shadow-xl transform -rotate-1 z-20 relative">
+                <h2 class="text-xl tracking-[0.15em] uppercase text-slateDark font-sansLookbook mb-4">Leave a Mission</h2>
+                <form id="suggestionForm" class="space-y-4 text-left font-sansLookbook">
+                    <select class="w-full bg-chalkWhite border border-slateDark/10 text-xs p-3 rounded text-slateDark focus:outline-none focus:border-almondSilk font-medium tracking-wider">
                         <option value="skills">Technical Skill / Hobby</option>
                         <option value="travel">Travel & Location</option>
                         <option value="misc">Random Life Advice</option>
                     </select>
-                    <textarea rows="3" placeholder="Drop next semester missions..." class="w-full bg-paleOak border border-almondSilk text-xs p-3 rounded text-darkText focus:outline-none placeholder:text-darkText/40 font-medium"></textarea>
-                    <button type="submit" class="w-full py-2.5 bg-darkText text-softPeach rounded font-mono text-[10px] uppercase tracking-widest hover:bg-darkText/90 transition-colors">Submit</button>
+                    <textarea rows="3" placeholder="Drop next semester missions..." class="w-full bg-chalkWhite border border-slateDark/10 text-xs p-3 rounded text-slateDark focus:outline-none focus:border-almondSilk placeholder:text-slateDark/30 font-medium tracking-wider"></textarea>
+                    <button type="submit" class="w-full py-2.5 bg-slateDark text-chalkWhite rounded text-[10px] uppercase tracking-[0.2em] hover:bg-slateDark/90 transition-colors">Submit</button>
                 </form>
             </div>
         </div>
 
-        <!-- CAROUSEL 6: ARCHIVES -->
         <div id="archives-view" class="carousel-view">
-            <div id="archives-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-center">
-                <!-- Auto-Populates -->
-            </div>
+            <div id="archives-track" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-start z-20 relative transition-all duration-500"></div>
         </div>
 
     </main>
 
-    <!-- FIXED BOTTOM NAVIGATION BAR DOCK -->
-    <footer class="w-full flex flex-col md:flex-row justify-between items-center gap-6 z-50 pt-4 border-t border-almondSilk/60">
-        <div class="text-[9px] font-mono uppercase tracking-widest text-petalPink hidden md:block">© 2026 // Archive Canvas</div>
+    <footer class="w-full flex flex-col md:flex-row justify-between items-center gap-6 z-50 pt-4 border-t border-slateDark/5 font-sansLookbook">
+        <div id="click-tip" class="text-[9px] uppercase tracking-[0.25em] text-mutedGray hidden md:block">Click any frame to read details</div>
         
-        <nav id="bottom-dock" class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-[10px] font-mono uppercase tracking-widest font-bold text-darkText/50">
-            <button data-target="home-view" class="nav-btn text-darkText transition-colors">Home</button>
+        <nav id="bottom-dock" class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-[11px] uppercase tracking-[0.25em] font-light text-slateDark/40">
+            <button data-target="home-view" class="nav-btn text-slateDark transition-colors">Home</button>
             <button data-target="academics-view" class="nav-btn transition-colors">Academics</button>
             <button data-target="events-view" class="nav-btn transition-colors">Events</button>
             <button data-target="sidequests-view" class="nav-btn transition-colors">Sidequests</button>
@@ -132,59 +148,122 @@
             <button data-target="archives-view" class="nav-btn transition-colors">Archives</button>
         </nav>
         
-        <div class="text-[9px] font-mono uppercase tracking-widest text-petalPink">Drag track sideways to explore</div>
+        <div class="text-[9px] uppercase tracking-[0.25em] text-mutedGray">Click & Drag Track to Explore</div>
     </footer>
 
-    <!-- INTERACTION CONTROLLER SCRIPT -->
     <script>
-        const imgCounts = {
-            home: 7,          // 1 is .jpg, 2-7 are .jpeg
-            academics: 10,
-            events: 16,
-            sidequests: 8,     // folder name is sidequ, contains 8 files
-            archives: 11
+        const imgCounts = { home: 7, academics: 10, events: 16, sidequests: 8, archives: 11 };
+
+        const landscapeConfig = {
+            'archivees': [1, 2, 3, 4, 5, 6, 7],
+            'events': [1, 2, 3, 4, 6, 7, 9],
+            'sidequ': [1, 2, 3, 4, 5]
+        };
+
+        const folderMap = {
+            'home-track': 'home',
+            'academics-track': 'academics',
+            'events-track': 'events',
+            'sidequests-track': 'sidequ',     
+            'archives-track': 'archivees'    
+        };
+
+        const containerTrackMap = {
+            'home-view': 'home-track',
+            'academics-view': 'academics-track',
+            'events-view': 'events-track',
+            'sidequests-view': 'sidequests-track',
+            'archives-view': 'archives-track'
+        };
+
+        const imageDescriptions = {
+            'home': {},
+            'academics': {
+                1: "First Arduino project crashout and recovery iced tea run! ft. Sam",
+                2: "A successful half adder multiplier implementation as part of our DLDCO course.",
+                3: "Engineering Lab diaries.",
+                4: "A successful engineering drawing diagram. Sometimes it's the small wins!!",
+                5: "Basic Engineering lab class.",
+                6: "That depth in the diagram took more than asking for help... it took serious jugaad!!",
+                7: "Only love for NeoCollab.",
+                8: "From an event at Shakespeare Gallery, back when ODs were a foreign concept.",
+                9: "Icebreaker session by IIC-VIT.",
+                10: "My clap switch using Arduino after a successful implementation!!"
+            },
+            'events': {
+                1: "Freshers event by the Ladies Hostel Office.",
+                2: "Riviera! My very first concert experience!!",
+                3: "An ideathon that helped us understand startups and the business world a bit better.",
+                4: "IIC hackathon organizers. Insane sync with the all-white outfits.",
+                5: "A fun, unwinding resin workshop.",
+                6: "Gamedev based event by IIC.",
+                7: "Welcoming the new Startup Domain inductees.",
+                8: "First time dressing up in formals, sometime in Jan 2026.",
+                9: "Meeting with the Vice President at Mahindra and Mahindra.",
+                10: "My first volunteering experience.",
+                11: "With a guest speaker at the gamedev event.",
+                12: "Prize ceremony at the conclusion of the ideathon.",
+                13: "The official treasure hunt map used as part of Gravitas!!",
+                14: "AI-based deep fake detection workshop.",
+                15: "Quick lunch break during the ThinkHer event.",
+                16: "Our very last-minute team at the Primavera debate contest. We actually came in 4th!!"
+            },
+            'sidequ': { 
+                1: "One of the best shows by the dance, dramatics, and music club.",
+                2: "DJ night prep setups.",
+                3: "Gravitas stall hopping around campus.",
+                4: "Night stroll random finds.",
+                5: "VIT looking amazing during Riviera.",
+                6: "The pure freshers night enthusiasm.",
+                7: "Taking in the Riviera decorations.",
+                8: "Resin workshop! We tried adding flowers... spot them if you can."
+            },
+            'archivees': { 
+                1: "Day ones at college. Incredibly lucky to have met them.",
+                2: "Freshers day memories.",
+                3: "Ganesh Chaturthi celebrations on campus.",
+                4: "Hostel birthday scenes.",
+                5: "Always improvising on hostel birthday celebrations tbh.",
+                6: "Garba night at the hostel.",
+                7: "The trio in class.",
+                8: "Puppies! Love finding these breaks between classes.",
+                9: "Pongal celebrations.",
+                10: "Midnight scenes right before exam season hits.",
+                11: "Midnight scenes pt. 2!!"
+            }
         };
 
         function generateDramaticMeechStyle(index) {
             const rotations = ['rotate-3', '-rotate-4', 'rotate-6', '-rotate-3', 'rotate-4', '-rotate-5'];
-            const margins = ['mt-0', 'mt-12', '-mt-10', 'mt-6', '-mt-8', 'mt-10'];
-            return { 
-                rotation: rotations[index % rotations.length], 
-                margin: margins[index % margins.length] 
-            };
+            const margins = ['mt-4', 'mt-14', '-mt-4', 'mt-8', '-mt-2', 'mt-12'];
+            return { rotation: rotations[index % rotations.length], margin: margins[index % margins.length] };
         }
 
         function buildAllCarousels() {
-            // Maps your structural track IDs to your exact computer folder names
-            const paths = {
-                'home-track': { folder: 'home', count: imgCounts.home },
-                'academics-track': { folder: 'academics', count: imgCounts.academics },
-                'events-track': { folder: 'events', count: imgCounts.events },
-                'sidequests-track': { folder: 'sidequ', count: imgCounts.sidequests }, // Fixed tracking connection key
-                'archives-track': { folder: 'archivees', count: imgCounts.archives }
-            };
-
-            Object.entries(paths).forEach(([trackId, data]) => {
+            Object.entries(folderMap).forEach(([trackId, folderName]) => {
                 const track = document.getElementById(trackId);
                 if (!track) return;
                 
+                let countKey = folderName === 'sidequ' ? 'sidequests' : folderName === 'archivees' ? 'archives' : folderName;
+                let count = imgCounts[countKey];
+                
                 track.innerHTML = '';
                 
-                // Double loop creates the clones necessary for infinite-wrap drag physics
                 for(let loop = 0; loop < 2; loop++) {
-                    for(let i = 1; i <= data.count; i++) {
-                        const style = generateDramaticMeechStyle(i + (loop * data.count));
+                    for(let i = 1; i <= count; i++) {
+                        const style = generateDramaticMeechStyle(i + (loop * count));
+                        let ext = (folderName === 'home' && i === 1) ? 'jpg' : 'jpeg';
+
+                        const folderLandscapeList = landscapeConfig[folderName] || [];
+                        const isLandscape = folderLandscapeList.includes(i);
                         
-                        // Handle your home folder rule explicitly: 1 is .jpg, others are .jpeg
-                        let ext = 'jpeg';
-                        if (data.folder === 'home' && i === 1) {
-                            ext = 'jpg';
-                        }
+                        const cardWidth = isLandscape ? 'w-[280px] md:w-[380px]' : 'w-[200px] md:w-[260px]';
+                        const cardAspect = isLandscape ? 'aspect-[4/3] max-h-[220px] md:max-h-[300px]' : 'aspect-[3/4] max-h-[280px] md:max-h-[380px]';
                         
                         track.innerHTML += `
-                            <div class="w-[200px] md:w-[260px] flex-shrink-0 transform transition-all duration-500 ease-out hover:rotate-0 hover:scale-105 ${style.rotation} ${style.margin}">
-                                <div class="w-full aspect-[3/4] max-h-[280px] md:max-h-[380px] bg-softPeach border-4 border-white rounded shadow-lg p-1">
-                                    <img src="images/${data.folder}/${i}.${ext}" 
+                            <div data-folder="${folderName}" data-id="${i}" class="lookbook-card ${cardWidth} flex-shrink-0 cursor-pointer transform transition-all duration-500 ease-out hover:rotate-0 hover:scale-105 ${style.rotation} ${style.margin}">
+                                <div class="w-full ${cardAspect} bg-cardBacking border-4 border-white rounded shadow-md p-1">
+                                    <img src="images/${folderName}/${i}.${ext}" 
                                          alt="Roadmap Frame" 
                                          class="w-full h-full object-cover rounded-sm"
                                          onerror="this.onerror=null; this.src=this.src.endsWith('.jpeg') ? this.src.replace('.jpeg', '.jpg') : this.src.replace('.jpg', '.jpeg');">
@@ -194,9 +273,115 @@
                     }
                 }
             });
+
+            setupExplodedViewTriggers();
         }
 
-        // Horizontal Drag Momentum Logic
+        function setupExplodedViewTriggers() {
+            const cards = document.querySelectorAll('.lookbook-card');
+            
+            cards.forEach(card => {
+                card.closest('.photo-track')?.addEventListener('mousedown', () => card.setAttribute('data-dragged', 'false'));
+                card.closest('.photo-track')?.addEventListener('mousemove', () => card.setAttribute('data-dragged', 'true'));
+
+                card.addEventListener('click', (e) => {
+                    if(card.getAttribute('data-dragged') === 'true') return;
+
+                    const folder = card.getAttribute('data-folder');
+                    const id = parseInt(card.getAttribute('data-id'));
+                    
+                    if (folder === 'home') return;
+
+                    const viewContainer = card.closest('.carousel-view');
+                    const track = viewContainer.querySelector('.photo-track');
+                    const originalTrackId = track ? track.id : containerTrackMap[viewContainer.id];
+                    
+                    renderExplodedPanel(viewContainer, folder, id, originalTrackId);
+                });
+            });
+        }
+
+        function renderExplodedPanel(container, folder, currentId, originalTrackId) {
+            const descText = imageDescriptions[folder][currentId] || "Memory Canvas Captured Frame.";
+            let imgExt = (folder === 'home' && currentId === 1) ? 'jpg' : 'jpeg';
+
+            container.classList.add('exploded-container');
+            
+            container.innerHTML = `
+                <div class="w-full flex flex-col md:flex-row items-center gap-6 bg-cardBacking border border-slateDark/5 p-6 rounded-lg shadow-xl z-30 relative animate-fadeIn">
+                    <button id="close-exploded" data-track="${originalTrackId}" class="absolute top-3 right-4 font-mono text-xs tracking-widest text-mutedGray hover:text-slateDark cursor-pointer uppercase font-bold">← Back</button>
+                    <div class="w-full md:w-1/2 aspect-[3/4] max-h-[340px] rounded overflow-hidden shadow-sm border-2 border-chalkWhite">
+                        <img id="main-exploded-img" src="images/${folder}/${currentId}.${imgExt}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='images/${folder}/${currentId}.jpg';">
+                    </div>
+                    <div class="w-full md:w-1/2 text-left">
+                        <h3 class="text-xs font-mono tracking-[0.2em] text-almondSilk uppercase mb-2">// Milestone Note</h3>
+                        <p id="main-exploded-desc" class="text-sm tracking-wide text-slateDark leading-relaxed font-sansLookbook font-light">${descText}</p>
+                    </div>
+                </div>
+
+                <div class="w-full h-[50vh] overflow-y-auto flex flex-col gap-12 items-center pt-4 pb-20 photo-track z-20">
+                    ${getTrackSiblingsHTML(folder)}
+                </div>
+            `;
+
+            document.getElementById('close-exploded').addEventListener('click', (e) => {
+                const trackTarget = e.target.getAttribute('data-track');
+                restoreOriginalTrackLayout(container, trackTarget);
+            });
+
+            const sidebarCards = container.querySelectorAll('.photo-track .lookbook-card');
+            sidebarCards.forEach(sidebarCard => {
+                sidebarCard.addEventListener('click', () => {
+                    const newId = parseInt(sidebarCard.getAttribute('data-id'));
+                    let newExt = (folder === 'home' && newId === 1) ? 'jpg' : 'jpeg';
+                    
+                    const mainImg = document.getElementById('main-exploded-img');
+                    const mainDesc = document.getElementById('main-exploded-desc');
+                    
+                    if (mainImg && mainDesc) {
+                        mainImg.src = `images/${folder}/${newId}.${newExt}`;
+                        mainDesc.innerText = imageDescriptions[folder][newId] || "Memory Canvas Captured Frame.";
+                    }
+                });
+            });
+        }
+
+        function getTrackSiblingsHTML(folder) {
+            let countKey = folder === 'sidequ' ? 'sidequests' : folder === 'archivees' ? 'archives' : folder;
+            let count = imgCounts[countKey];
+            let html = '';
+            for(let i = 1; i <= count; i++) {
+                let ext = (folder === 'home' && i === 1) ? 'jpg' : 'jpeg';
+                const folderLandscapeList = landscapeConfig[folder] || [];
+                const isLandscape = folderLandscapeList.includes(i);
+                const cardWidth = isLandscape ? 'w-[240px]' : 'w-[180px]';
+                const cardAspect = isLandscape ? 'aspect-[4/3]' : 'aspect-[3/4]';
+
+                html += `
+                    <div data-folder="${folder}" data-id="${i}" class="lookbook-card ${cardWidth} flex-shrink-0 cursor-pointer transform transition-all duration-300 hover:scale-105">
+                        <div class="w-full ${cardAspect} bg-cardBacking border-2 border-white rounded shadow-md p-0.5">
+                            <img src="images/${folder}/${i}.${ext}" class="w-full h-full object-cover rounded-sm" onerror="this.onerror=null; this.src='images/${folder}/${i}.jpg';">
+                        </div>
+                    </div>
+                `;
+            }
+            return html;
+        }
+
+        function restoreOriginalTrackLayout(container, trackId) {
+            container.classList.remove('exploded-container');
+            container.innerHTML = `
+                <div id="${trackId}" class="photo-track w-full flex overflow-x-auto space-x-24 md:space-x-32 pt-12 pb-16 items-start z-20 relative transition-all duration-500"></div>
+            `;
+            buildAllCarousels();
+            
+            const tracks = ['home-track', 'academics-track', 'events-track', 'sidequests-track', 'archives-track'];
+            tracks.forEach(setupCarouselInteractions);
+            
+            const restoredTrack = document.getElementById(trackId);
+            if (restoredTrack) restoredTrack.scrollLeft = (restoredTrack.scrollWidth - restoredTrack.clientWidth) / 2;
+        }
+
         function setupCarouselInteractions(trackId) {
             const track = document.getElementById(trackId);
             if (!track) return;
@@ -243,31 +428,37 @@
             const buttons = document.querySelectorAll('.nav-btn');
             const views = document.querySelectorAll('.carousel-view');
             const indicator = document.getElementById('view-indicator');
+            const tip = document.getElementById('click-tip');
 
             buttons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const target = btn.getAttribute('data-target');
                     
-                    buttons.forEach(b => b.classList.remove('text-darkText', 'font-bold'));
-                    btn.classList.add('text-darkText', 'font-bold');
+                    buttons.forEach(b => b.classList.remove('text-slateDark', 'font-bold'));
+                    btn.classList.add('text-slateDark', 'font-bold');
 
-                    views.forEach(v => v.classList.remove('active-view'));
+                    views.forEach(v => { v.classList.remove('active-view', 'exploded-container'); });
+                    
                     const targetView = document.getElementById(target);
                     targetView.classList.add('active-view');
 
-                    const track = targetView.querySelector('.photo-track');
-                    if (track) {
-                        track.scrollLeft = (track.scrollWidth - track.clientWidth) / 2;
-                    }
+                    buildAllCarousels();
+                    const tracks = ['home-track', 'academics-track', 'events-track', 'sidequests-track', 'archives-track'];
+                    tracks.forEach(setupCarouselInteractions);
 
-                    indicator.innerText = `// ${btn.innerText} Panel`;
+                    const track = targetView.querySelector('.photo-track');
+                    if (track) { track.scrollLeft = (track.scrollWidth - track.clientWidth) / 2; }
+
+                    indicator.innerText = `// ${btn.innerText} Canvas`;
+                    tip.innerText = target === 'home-view' ? "© 2026 // Gallery Interface" : "Click any frame to read details";
                 });
             });
         }
 
         window.onload = () => {
             buildAllCarousels();
-            ['home-track', 'academics-track', 'events-track', 'sidequests-track', 'archives-track'].forEach(setupCarouselInteractions);
+            const tracks = ['home-track', 'academics-track', 'events-track', 'sidequests-track', 'archives-track'];
+            tracks.forEach(setupCarouselInteractions);
             setupBottomDockNavigation();
             
             const homeTrack = document.getElementById('home-track');
